@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 // Components
 import Accordion from './components/Accordion';
 import Dropdown from './components/Dropdown';
+import Route from './components/Route';
 import Search from './components/Search';
 import Translate from './components/Translate';
+import Header from './components/Header';
 import './style/style.css';
 
 const items = [
@@ -27,13 +29,27 @@ function App() {
   return (
     <div className='ui container'>
       <br />
-      {/* <Dropdown
-        selection={selection}
-        onSelectionChange={setSelection}
-        options={options.filter((i) => i !== selection)}
-        label='Select a color'
-      /> */}
-      <Translate />
+      <Header />
+      <Route path={'/translate'}>
+        <Translate />
+      </Route>
+
+      <Route path={'/dropdown'}>
+        <Dropdown
+          selection={selection}
+          onSelectionChange={setSelection}
+          options={options.filter((i) => i !== selection)}
+          label='Select a color'
+        />
+      </Route>
+
+      <Route path={'/'}>
+        <Accordion items={items} />
+      </Route>
+
+      <Route path={'/list'}>
+        <Search />
+      </Route>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../style/dropdown.css';
-const Dropdown = ({ options, label, selection, onSelectionChange }) => {
+const Dropdown = ({ options, label, selection, onSelectionChange, children }) => {
   const [visible, setVisible] = useState(false);
+
   const refForm = useRef();
   const renderedOptions = options.map((opt) => {
     return (
@@ -12,20 +13,24 @@ const Dropdown = ({ options, label, selection, onSelectionChange }) => {
   });
   // close dropdown when click outsite it
   useEffect(() => {
-    const onBodyEvent = (e) => {
-      if (!refForm.current.contains(e.target)) {
-        setVisible(false);
+    const onBodyClick = (event) => {
+      if (refForm.current && refForm.current.contains(event.target)) {
+        return;
       }
+
+      setVisible(false);
     };
-    document.body.addEventListener('click', onBodyEvent);
+
+    document.body.addEventListener('click', onBodyClick);
+
     return () => {
-      document.body.removeEventListener('click', onBodyEvent);
+      document.body.removeEventListener('click', onBodyClick);
     };
   }, []);
 
   return (
     <div id='dropdown'>
-      <div ref={refForm} className='ui form   '>
+      <div ref={refForm} className='ui form'>
         <div className='field'>
           <label htmlFor='' className='label'>
             {label}
@@ -41,6 +46,7 @@ const Dropdown = ({ options, label, selection, onSelectionChange }) => {
           </div>
         </div>
       </div>
+      {children}
     </div>
   );
 };
