@@ -7,6 +7,7 @@ import Search from './components/Search';
 import Translate from './components/Translate';
 import Header from './components/Header';
 import './style/style.css';
+import Test from './components/Test1';
 
 const items = [
   { title: 'What is React ? ', content: ' React is a front-end javascript framework' },
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className='ui container'>
       <br />
-      <Header />
+      {/* <Header />
       <Route path={'/translate'}>
         <Translate />
       </Route>
@@ -49,7 +50,8 @@ function App() {
 
       <Route path={'/list'}>
         <Search />
-      </Route>
+      </Route> */}
+      <Test />
     </div>
   );
 }
