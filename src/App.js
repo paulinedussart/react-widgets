@@ -30,12 +30,13 @@ function App() {
   return (
     <div className='ui container'>
       <br />
-      {/* <Header />
+      <Header />
       <Route path={'/translate'}>
         <Translate />
       </Route>
 
       <Route path={'/dropdown'}>
+        <h1>Dropdown Color</h1>
         <Dropdown
           selection={selection}
           onSelectionChange={setSelection}
@@ -50,8 +51,8 @@ function App() {
 
       <Route path={'/list'}>
         <Search />
-      </Route> */}
-      <Test />
+      </Route>
+      {/* <Test /> */}
     </div>
   );
 }

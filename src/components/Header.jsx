@@ -3,7 +3,7 @@ import Link from './Link';
 const Header = () => {
   return (
     <div>
-      <div className='ui pointing secondary menu'>
+      <div style={{ marginBottom: '20px' }} className='ui pointing secondary menu'>
         <Link href='/' className=' item'>
           Accordion
         </Link>
